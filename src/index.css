@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#root {
+  background-color: black;
+  color: #ffffff;
+}
+
+header {
+  background-color: black;
+}
+
+main {
+  background-color: #ffffff;
+  color: #000;
+  height: 85vh;
+}
