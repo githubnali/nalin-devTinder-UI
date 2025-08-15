@@ -25,6 +25,11 @@ EP:16
 - refactor our code by adding constants file inside utils and update the BASE_URL
 - create a components folder and move all the compnents into components folder
 
+# EP:17
+- You should not be able to access other routes without login
+- if token is not present to .login page
+- logout
+
 ## crafted
 Made with ❤️ love for developers everywhere
 Crafted with 💻 love, for coders by coders
