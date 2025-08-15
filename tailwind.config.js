@@ -10,4 +10,7 @@ export default {
     extend: {},
   },
   plugins: [daisyui],
+  daisyui: {
+    themes: ["cupcake", "dracula"], // list of themes you want
+  },
 }

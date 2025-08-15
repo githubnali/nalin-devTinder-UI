@@ -25,6 +25,18 @@ EP:16
 - refactor our code by adding constants file inside utils and update the BASE_URL
 - create a components folder and move all the compnents into components folder
 
+## crafted
+Made with ❤️ love for developers everywhere
+Crafted with 💻 love, for coders by coders
+Built with ❤️ passion for the developer community
+Designed with 💻 care, by devs for devs
+Made with ❤️ dedication for those who turn ideas into code
+Crafted with 💻 love, inspired by the dev spirit
+Created with ❤️ heart for devs who love to connect
+Built with 💻 purpose, by devs for devs
+Made with ❤️ love & clean code for all developers
+Crafted with 💻 love to empower your next big idea
+
 
 
 

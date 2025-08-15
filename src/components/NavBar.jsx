@@ -9,7 +9,12 @@ const NavBar = () => {
   return (
      <header className="navbar bg-neutral shadow-sm">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">DevTinder</a>
+      <div className="avatar">
+        <div className="w-10">
+          <img src="./favicon.svg" />
+        </div>
+      </div>        
+      <a className="text-xl font-semibold ml-3 mt-3">DevTinder</a>
       </div>
       {user &&  <div className="flex items-center font-bold">
         <div>Welcome, {user.firstName}</div>
