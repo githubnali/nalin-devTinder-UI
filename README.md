@@ -36,6 +36,9 @@ EP:16
 - for gender make dropdown where user select the options
 - for about and photourl updated the textarea elememt
 
+# EP:18
+- see all my connections page
+
 
 ## crafted
 Made with ❤️ love for developers everywhere

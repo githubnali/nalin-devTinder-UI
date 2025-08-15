@@ -23,13 +23,13 @@ const NavBar = () => {
   return (
      <header className="navbar bg-neutral shadow-sm">
       <div className="flex-1">
-        <Link to="/">
+        <Link to="/" className='flex items-center gap-4'>
           <div className="avatar">
             <div className="w-10">
               <img src="./favicon.svg" />
             </div>
           </div>        
-          <a className="text-xl font-semibold ml-3 mt-3">DevTinder</a>
+          <p className="text-xl font-semibold">DevTinder</p>
         </Link>
       </div>
       {user &&  <div className="flex items-center font-bold">
@@ -51,7 +51,9 @@ const NavBar = () => {
                 <span className="badge">New</span>
               </Link>
             </li>
-            <li><a>Settings</a></li>
+            <li>
+              <Link to="/connections">Connections</Link>
+            </li>
             <li><a onClick={handleLogout}>Logout</a></li>
           </ul>
         </div>

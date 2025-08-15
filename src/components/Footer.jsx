@@ -5,13 +5,13 @@ const Footer = () => {
     <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4">
         <aside className="grid-flow-col items-center">
         <img src="./favicon.svg" className='w-10' />
-        <a class="text-xl font-semibold">DevTinder</a>
+        <a className="text-xl font-semibold">DevTinder</a>
         <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
         </aside>
         <p className='text-center'>Made with ❤️ dedication for those who turn ideas into code</p>
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
             <a href="https://www.linkedin.com/in/nagaraju-nali-98a037172/" >
-                <span class="[&>svg]:h-7 [&>svg]:w-7">
+                <span className="[&>svg]:h-7 [&>svg]:w-7">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -23,7 +23,7 @@ const Footer = () => {
             </a>
 
             <a href="https://github.com/githubnali">
-                <span class="[&>svg]:h-7 [&>svg]:w-7">
+                <span className="[&>svg]:h-7 [&>svg]:w-7">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"

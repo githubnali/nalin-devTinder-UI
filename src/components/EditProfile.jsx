@@ -99,15 +99,14 @@ const saveProfile = async() => {
 
                         <fieldset className="fieldset mb-3">
                             <legend className="fieldset-legend text-white">Photo Url:</legend>
-                            <textarea className="textarea text-neutral" placeholder="your photo url" onChange={(e) => setPhotoUrl(e.target.value)}>
-                                {photoUrl}
+                            <textarea className="textarea text-neutral" placeholder="your photo url" value={photoUrl} onChange={(e) => setPhotoUrl(e.target.value)}>
+                              
                             </textarea>
                         </fieldset>
               
                         <fieldset className="fieldset mb-3">
                             <legend className="fieldset-legend text-white">About:</legend>
-                            <textarea className="textarea text-neutral" placeholder="Tell About Yourself" onChange={(e) => setAbout(e.target.value)}>
-                                {about}
+                            <textarea className="textarea text-neutral" placeholder="Tell About Yourself" value={about} onChange={(e) => setAbout(e.target.value)}>
                             </textarea>
                         </fieldset>
                     </div>
