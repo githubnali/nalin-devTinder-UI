@@ -29,7 +29,13 @@ EP:16
 - You should not be able to access other routes without login
 - if token is not present to .login page
 - logout feature completed
-- 
+- get the feed and add the feed into store
+- build the user feed card
+- build the edit profile page where you can edit your firstName, lastName, age, gender, about,  photoUrl
+- and also show the update the message using daisyui component toast
+- for gender make dropdown where user select the options
+- for about and photourl updated the textarea elememt
+
 
 ## crafted
 Made with ❤️ love for developers everywhere
