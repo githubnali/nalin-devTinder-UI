@@ -28,7 +28,8 @@ EP:16
 # EP:17
 - You should not be able to access other routes without login
 - if token is not present to .login page
-- logout
+- logout feature completed
+- 
 
 ## crafted
 Made with ❤️ love for developers everywhere
