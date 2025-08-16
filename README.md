@@ -39,6 +39,12 @@ EP:16
 # EP:18
 - New Page - see all my connections page
 - New Page - see all my connection requests
+- Feature - accept reject connection request
+
+# Remaining
+- send/ignore the user card from the feed
+- sign up new user
+- E2E testing
 
 
 ## crafted
