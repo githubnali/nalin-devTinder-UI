@@ -37,7 +37,8 @@ EP:16
 - for about and photourl updated the textarea elememt
 
 # EP:18
-- see all my connections page
+- New Page - see all my connections page
+- New Page - see all my connection requests
 
 
 ## crafted
