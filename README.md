@@ -49,6 +49,13 @@ EP:16
 - E2E testing
 
 
+
+
+# EP : UI flow One
+- Home Page creation
+
+
+
 ## crafted
 Made with ❤️ love for developers everywhere
 Crafted with 💻 love, for coders by coders

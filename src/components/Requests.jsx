@@ -1,73 +1,104 @@
-import React, {useEffect}from 'react'
-import { BASE_URL } from '../utils/constants'
-import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { addRequest, removeRequest } from '../utils/requestSlice'
-
-import { useSelector } from 'react-redux'
+import React, { useEffect } from "react";
+import { BASE_URL } from "../utils/constants";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addRequest, removeRequest } from "../utils/requestSlice";
 
 const Requests = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const reviewRequest = async(status, _id) => {
-        try {
-            const resp = await axios.post(
-                BASE_URL + "/request/review/" + status + "/" + _id, 
-                {}, 
-                {withCredentials: true}
-            );
-            dispatch(removeRequest(_id))
-        }catch(err){
-            console.error(err)
-        }
+  const reviewRequest = async (status, _id) => {
+    try {
+      await axios.post(
+        BASE_URL + "/request/review/" + status + "/" + _id,
+        {},
+        { withCredentials: true }
+      );
+      dispatch(removeRequest(_id));
+    } catch (err) {
+      console.error(err);
     }
+  };
 
-    const fetchrequests = async() => {
-        // Fetch requests logic here  
-        try  {
-            const resp = await axios.get(BASE_URL + '/user/requests/received', {withCredentials: true})
-            console.log(resp.data.data)
-            dispatch(addRequest(resp.data.data))
-        }catch(err) {
-            console.error(err)
-        }
+  const fetchRequests = async () => {
+    try {
+      const resp = await axios.get(BASE_URL + "/user/requests/received", {
+        withCredentials: true,
+      });
+      dispatch(addRequest(resp.data.data));
+    } catch (err) {
+      console.error(err);
     }
+  };
 
-    useEffect(() => {
-        fetchrequests()
-    }, []);
+  useEffect(() => {
+    fetchRequests();
+  }, []);
 
-    const requests = useSelector((store) => store.request);
+  const requests = useSelector((store) => store.request);
 
-    if(!requests) return
+  if (!requests) return null;
 
-    if(requests.length === 0) return <h1 className='font-bold text-2xl text-center'>No Connections Requests Found</h1>
-    
+  if (requests.length === 0)
     return (
-        <div className='text-center justify-center '>
-            <h1 className='font-bold text-4xl'>Connections Requests</h1>
-            {requests.map(requests => {
-                const { _id, firstName, lastName, photoUrl, age, gender, about} = requests.fromUserId;
-            
-                return (
-                    <div key={_id} className='flex justify-between items-center gap-4 m-4 p-4 border rounded-md bg-neutral text-white w-10/12 md:w-1/2 mx-auto'>
-                        <div>
-                            <img  alt='photo' src={photoUrl} className='w-20 h-20 rounded'/>
-                        </div>
-                        <div className='text-left'>
-                            <h2 className='text-2xl'>{firstName + " " + lastName}</h2>
-                            {age && gender && <p>{age + ', '+gender}</p>}
-                            <p className='text-md'>{about}</p>
-                        </div>
-                        <div>
-                            <button className='btn btn-secondary mx-2' onClick={() => reviewRequest("rejected", requests._id)}>Reject</button>
-                            <button className='btn btn-primary mx-2' onClick={() => reviewRequest("accepted", requests._id)}>Accept</button>
-                        </div>
-                    </div>
-                )
-            })}
-        </div>
-    )
-}
+      <h1 className="font-bold text-2xl text-center mt-10 text-neutral/70">
+        No Connection Requests Found 🙌
+      </h1>
+    );
 
-export default Requests
+  return (
+    <div className="text-center px-4 min-h-[80vh]">
+      <h1 className="font-bold text-4xl text-primary mb-8">
+        Connection Requests
+      </h1>
+
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 justify-center">
+        {requests.map((req) => {
+          const { _id, firstName, lastName, photoUrl, age, gender, about } =
+            req.fromUserId;
+
+          return (
+            <div
+              key={_id}
+              className="card bg-base-100 shadow-lg rounded-2xl border border-primary/30 hover:shadow-xl transition-all"
+            >
+              <div className="card-body items-center text-center">
+                <img
+                  alt="profile"
+                  src={photoUrl}
+                  className="w-24 h-24 rounded-full border-4 border-primary shadow-md object-cover"
+                />
+                <h2 className="card-title text-primary mt-3">
+                  {firstName + " " + lastName}
+                </h2>
+                {age && gender && (
+                  <p className="text-neutral/70 text-sm">
+                    {age + ", " + gender}
+                  </p>
+                )}
+                <p className="text-neutral/80 text-sm italic mt-2">{about}</p>
+
+                <div className="card-actions mt-4">
+                  <button
+                    className="btn btn-error text-white"
+                    onClick={() => reviewRequest("rejected", req._id)}
+                  >
+                    Reject
+                  </button>
+                  <button
+                    className="btn btn-primary text-white"
+                    onClick={() => reviewRequest("accepted", req._id)}
+                  >
+                    Accept
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Requests;

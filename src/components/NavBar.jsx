@@ -29,7 +29,7 @@ const NavBar = () => {
               <img src="./favicon.svg" />
             </div>
           </div>        
-          <p className="text-xl font-semibold">DevTinder</p>
+          <p className="text-xl font-semibold">DevCircle</p>
         </Link>
       </div>
       {user &&  <div className="flex items-center font-bold">

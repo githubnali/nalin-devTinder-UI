@@ -7,6 +7,8 @@ import { BASE_URL } from '../utils/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { addUser } from '../utils/userSlice'
 
+import Header from './Header'
+
 const Body = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ const Body = () => {
       dispatch(addUser(resp.data))
     }catch(err) {
       if(err.status === 401) {
-        navigate("/login")
+        navigate("/auth?mode=login")
       }
       // console.error(err)
     }
@@ -31,8 +33,9 @@ const Body = () => {
   }, [])
   return (
     <>
-        <NavBar/>
-        <main>
+        {/* <NavBar/> */}
+        <Header/>
+        <main className='p-0 bg-base-200'>
             <Outlet />
         </main>
         <Footer/>

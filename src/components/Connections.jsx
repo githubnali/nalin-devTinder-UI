@@ -1,50 +1,69 @@
-import React, { useEffect } from 'react'
-import { BASE_URL } from '../utils/constants'
-import axios from 'axios'
-import { useDispatch, useSelector } from 'react-redux'
-import { addConnections } from '../utils/connectionsSlice'
+import React, { useEffect } from "react";
+import { BASE_URL } from "../utils/constants";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addConnections } from "../utils/connectionsSlice";
+
 const Connections = () => {
-
   const dispatch = useDispatch();
-  const fetchConnections = async() => {
 
+  const fetchConnections = async () => {
     try {
-        const resp = await axios.get(BASE_URL + "/user/connections", {withCredentials: true});
-        console.log(resp.data.data)
-        dispatch(addConnections(resp.data.data))
-    }catch(err) {
-        console.error(err)
+      const resp = await axios.get(BASE_URL + "/user/connections", {
+        withCredentials: true,
+      });
+      dispatch(addConnections(resp.data.data));
+    } catch (err) {
+      console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchConnections()
-  }, [])
+    fetchConnections();
+  }, []);
 
   const connections = useSelector((store) => store.connection);
 
-  if(!connections) return
+  if (!connections) return null;
 
-  if(connections.length === 0) return    <h1 className='font-bold text-2xl'>No Connections found</h1>
-
+  if (connections.length === 0)
+    return (
+      <h1 className="font-bold text-2xl text-center mt-10 text-neutral/70">
+        No Connections Found 😔
+      </h1>
+    );
 
   return (
-    <div className='text-center justify-center '>
-        <h1 className='font-bold text-4xl'>Connections</h1>
-        {connections.map(connection => (
-            <div className='flex gap-4 m-4 p-4 border rounded-md bg-neutral text-white w-10/12 md:w-1/2 mx-auto'>
-                <div>
-                    <img  alt='photo' src={connection.photoUrl} className='w-20 h-20 rounded'/>
-                </div>
-                <div className='text-left'>
-                    <h2 className='text-2xl'>{connection.firstName + " " + connection.lastName}</h2>
-                    {connection.age && connection.gender && <p>{connection.age + ', '+connection.gender}</p>}
-                    <p className='text-md'>{connection.about}</p>
-                </div>
-            </div>
-        ))}
-    </div>
-  )
-}
+    <div className="px-4 py-6 max-w-3xl mx-auto">
+      <h1 className="font-bold text-4xl text-primary text-center mb-8">
+        Connections
+      </h1>
 
-export default Connections
+      {connections.map((connection) => (
+        <div
+          key={connection._id}
+          className="flex items-center gap-4 mb-6 p-4 rounded-2xl bg-base-100 shadow-md border border-primary/20 hover:shadow-lg transition-all"
+        >
+          <img
+            alt="profile"
+            src={connection.photoUrl}
+            className="w-20 h-20 rounded-full border-4 border-primary object-cover shadow"
+          />
+          <div className="flex-1">
+            <h2 className="text-xl font-semibold text-primary">
+              {connection.firstName + " " + connection.lastName}
+            </h2>
+            {connection.age && connection.gender && (
+              <p className="text-neutral/70 text-sm">
+                {connection.age + ", " + connection.gender}
+              </p>
+            )}
+            <p className="text-neutral/80 text-sm mt-1">{connection.about}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Connections;
