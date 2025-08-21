@@ -5,10 +5,16 @@ import { FaUsers, FaCode, FaProjectDiagram } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 
 
 const Home = () => {
 
+    const user = useSelector((store) => store.user);
+
+    const isLoggedIn = !!user;
+    
     /* -------- Simple typewriter hook (types once, then stops) -------- */
     function useTypewriterOnce(text, { typeSpeed = 80 } = {}) {
     const [subIndex, setSubIndex] = useState(0);
@@ -229,11 +235,14 @@ const Home = () => {
 
             {/* Call to Action */}
             <section className="py-24 bg-gradient-to-r from-primary to-secondary text-center text-white relative overflow-hidden">
-                {/* Decorative blur circle */}
-                <div className="absolute top-0 left-0 w-64 h-64 bg-accent/30 rounded-full blur-3xl opacity-40"></div>
-                <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary/30 rounded-full blur-3xl opacity-30"></div>
+            {/* Decorative blur circles */}
+            <div className="absolute top-0 left-0 w-64 h-64 bg-accent/30 rounded-full blur-3xl opacity-40"></div>
+            <div className="absolute bottom-0 right-0 w-72 h-72 bg-primary/30 rounded-full blur-3xl opacity-30"></div>
 
-                <div className="relative z-10 max-w-3xl mx-auto px-6">
+            <div className="relative z-10 max-w-4xl mx-auto px-6">
+                {!isLoggedIn ? (
+                <>
+                    {/* Guest / Not Logged In */}
                     <motion.h2
                     className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight"
                     initial={{ opacity: 0, y: 30 }}
@@ -251,19 +260,75 @@ const Home = () => {
                     transition={{ delay: 0.2 }}
                     viewport={{ once: true }}
                     >
-                    Join today and become part of a thriving developer network that’s building the future together.
+                    Join today and become part of a thriving developer network that’s
+                    building the future together.
                     </motion.p>
 
                     <Link to="/auth?mode=signup">
                     <motion.button
                         className="btn bg-accent border-0 px-10 py-3 text-lg rounded-full shadow-lg hover:shadow-accent/50 transition"
                         whileHover={{ scale: 1.07 }}
-                        >
+                    >
                         🚀 Sign Up Now
+                    </motion.button>
+                    </Link>
+                </>
+                ) : (
+                <>
+                    {/* Logged In User */}
+                    <motion.h2
+                    className="text-3xl md:text-4xl font-bold mb-6"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    >
+                    Welcome back,{" "}
+                    <span className="text-accent">{user?.name || "Developer"}</span> 👋
+                    </motion.h2>
+
+                    <motion.p
+                    className="text-lg text-neutral-100/90 mb-8"
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ delay: 0.2 }}
+                    viewport={{ once: true }}
+                    >
+                    Ready to continue your journey? Explore your connections, join
+                    discussions, or find new collaborators.
+                    </motion.p>
+
+                    <div className="flex flex-wrap justify-center gap-4">
+                    <Link to="/feed">
+                        <motion.button
+                        className="btn bg-accent border-0 px-8 py-3 rounded-full shadow-md hover:shadow-accent/40 transition"
+                        whileHover={{ scale: 1.05 }}
+                        >
+                        🔍 Find Matchings
                         </motion.button>
                     </Link>
-                
-                </div>
+
+                    <Link to="/connections">
+                        <motion.button
+                        className="btn bg-primary border-0 px-8 py-3 rounded-full shadow-md hover:shadow-primary/40 transition"
+                        whileHover={{ scale: 1.05 }}
+                        >
+                        🤝 My Connections
+                        </motion.button>
+                    </Link>
+
+                    <Link to="/requests">
+                        <motion.button
+                        className="btn bg-secondary border-0 px-8 py-3 rounded-full shadow-md hover:shadow-secondary/40 transition"
+                        whileHover={{ scale: 1.05 }}
+                        >
+                        📩 Requests
+                        </motion.button>
+                    </Link>
+                    </div>
+                </>
+                )}
+            </div>
             </section>
 
         </main>

@@ -7,7 +7,7 @@ const Profile = () => {
   const user = useSelector((store) => store.user)
   return (
     (user && 
-      <div>
+      <div className='container mx-auto py-10'>
         <EditProfile user={user}/>
       </div>
     )

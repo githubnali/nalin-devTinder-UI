@@ -9,6 +9,7 @@ import Connections from "./components/Connections"
 import Requests from "./components/Requests";
 import Home from "./components/Home";
 import AuthForm from "./components/AuthForm";
+import { NotFound } from "./components/NotFound"
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path='/profile' element={<Profile/>}/>
               <Route path="/connections" element={<Connections/>}/>
               <Route path="/requests" element={<Requests/>}/>
+              <Route path="*" element={<NotFound/>}/>
             </Route>
           </Routes>
         

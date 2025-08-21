@@ -132,14 +132,6 @@ export default function NavBar() {
                         </li>
                         <li>
                             <button
-                            className="text-primary dark:text-white hover:bg-error/10 hover:text-error rounded-lg px-2"
-                            onClick={handleLogout}
-                            >
-                            <FiLogOut size={16} /> Logout
-                            </button>
-                        </li>
-                        <li>
-                            <button
                                 onClick={toggleTheme}
                                 className="flex items-center gap-2 text-primary hover:bg-primary/10 rounded-lg px-2 py-1 transition"
                                 >
@@ -154,6 +146,14 @@ export default function NavBar() {
                                     <span>Dark Mode</span>
                                     </>
                                 )}
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                            className="text-primary dark:text-white hover:bg-error/10 hover:text-error rounded-lg px-2"
+                            onClick={handleLogout}
+                            >
+                            <FiLogOut size={16} /> Logout
                             </button>
                         </li>
                     </ul>
@@ -174,7 +174,7 @@ export default function NavBar() {
 
       {/* Mobile Nav Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-base-100 border-t border-base-300 shadow-lg">
+        <div className="md:hidden bg-base-100 border-t border-base-300 shadow-lg text-primary">
           <nav className="flex flex-col items-start p-4 space-y-3">
             {!user && (
               <>
@@ -200,9 +200,9 @@ export default function NavBar() {
                 <Link
                   to="/profile"
                   onClick={() => setIsOpen(false)}
-                  className="hover:text-primary"
+                  className="hover:text-primary flex items-center gap-2 font-medium"
                 >
-                  Profile
+                  <FiUser size={16} /> Profile
                 </Link>
                 <Link
                   to="/connections"

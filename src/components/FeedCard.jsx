@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { BASE_URL } from "../utils/constants";
 
 const FeedCard = ({ user, onRemove }) => {
-  const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
+  const { _id, firstName, lastName, photoUrl, age, gender, about, skills } = user;
   const [swipeDirection, setSwipeDirection] = useState(null);
 
   const handleSendRequest = async (status, userId) => {
@@ -53,6 +53,18 @@ const FeedCard = ({ user, onRemove }) => {
           <p className="text-neutral/80">{age}, {gender}</p>
         )}
         <p className="text-neutral/80">{about}</p>
+
+        {skills && skills.length > 0 && (
+          <div className="mt-4">
+            <ul className="list-disc list-inside text-neutral/70">  
+                {skills.map((skill, index) => (
+                    <li key={index} className="text-sm bg-primary text-white font-medium rounded-full px-3 py-1 inline-block mr-2 mb-2">
+                        {skill}
+                    </li>
+                    ))}
+            </ul>
+            </div>
+        )}
 
         {/* Buttons */}
         <div className="card-actions justify-center my-4 gap-4">

@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequest, removeRequest } from "../utils/requestSlice";
+import { div } from "framer-motion/client";
 
 const Requests = () => {
   const dispatch = useDispatch();
@@ -41,13 +42,14 @@ const Requests = () => {
 
   if (requests.length === 0)
     return (
-      <h1 className="font-bold text-2xl text-center mt-10 text-neutral/70">
-        No Connection Requests Found 🙌
-      </h1>
+        <div className="min-h-screen flex flex-col justify-center items-center bg-base-200 px-4">
+          <p className="text-2xl font-semibold text-primary">No Connection Requests Found 🙌</p>
+        </div>
+
     );
 
   return (
-    <div className="text-center px-4 min-h-[80vh]">
+    <div className="container mx-auto text-center px-4 py-10 min-h-[80vh]">
       <h1 className="font-bold text-4xl text-primary mb-8">
         Connection Requests
       </h1>
@@ -97,6 +99,7 @@ const Requests = () => {
           );
         })}
       </div>
+
     </div>
   );
 };
