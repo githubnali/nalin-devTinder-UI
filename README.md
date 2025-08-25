@@ -78,3 +78,31 @@ Crafted with 💻 love to empower your next big idea
     Route = /connections => i will show all my connections
     Route = /profile => show my profile
 
+
+- Deployment Steps:
+- Signup on AWS
+- Lanunch an Instance
+- chmod 400 devcircle-secret.pem
+- connect to your machine ssh -i "devcircle-secret.pem" ubuntu@ec2-54-196-190-168.compute-1.amazonaws.com
+- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+- install node version nvm install 22.14.0
+- let clone your frontend and backend projects into your aws machine from your github
+- go to your project and do the npm install on ASW machine
+- Frontend Deplyment Steps:
+    - npm install - to downlad all the dependencies
+    - npm run build - to build the production build
+    - sudo apt update - to update all the versions of the apps
+    - sudo apt install nginx - to install the nginx 
+    - sudo systemctl start nginx - to start your nginx
+    - sudo systemctl enable nginx - to enable nginx
+    - copy code from dist(build files) to /var/www/html/
+    - using this comand sudo scp -r dist/* /var/www/html/
+    - check for /var/www/html/ path wether files are came copied and pasted or not
+    - once you done all those steps if you try to access your public IP address http://54.196.190.168/
+    - it won't work because we have to enable port :80 
+    - Go to your security groups and and enable the port :80 then you can see your Public IP up and running
+
+
+
+
+
