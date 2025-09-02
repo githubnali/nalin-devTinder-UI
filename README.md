@@ -102,6 +102,35 @@ Crafted with 💻 love to empower your next big idea
     - it won't work because we have to enable port :80 
     - Go to your security groups and and enable the port :80 then you can see your Public IP up and running
 
+- Backend Deployment Steps:
+    - allowed EC2 instance public IP on mongoDB sever
+    - installed pm2 (process management) using npm install pm2 -g
+    - pm2 start npm -- start : to run 24/7 in the background
+    - pm2 logs: to check all the logs
+    - pm2 list: to see the all running processes
+    - pm2 flush <name> : to remove the logs
+    - pm2 stop <name> : to stop the processes
+    - pm2 delete <name> : to delete the processes
+    - pm2 start npm --name "devCircle-backend" -- start : to setup a new custom name for your processor
+    - path of nginx config: sudo vi /etc/nginx/sites-available/default
+    - press i to edit the file
+    - press Esc to come to command mode
+    - save and exit using :wq
+
+    - server_name 54.196.190.168;
+
+
+    - location /api/ {
+                proxy_pass http://localhost:1818/;   # note the trailing /
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+       }
+    - restart your nginx using: sudo systemctl restart nginx
+    - modify the BASE URL in front end project to "/api"
+
 
 
 
