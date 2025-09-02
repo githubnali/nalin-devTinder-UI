@@ -121,15 +121,19 @@ Crafted with 💻 love to empower your next big idea
 
 
     - location /api/ {
-                proxy_pass http://localhost:1818/;   # note the trailing /
-                proxy_http_version 1.1;
-                proxy_set_header Upgrade $http_upgrade;
-                proxy_set_header Connection 'upgrade';
-                proxy_set_header Host $host;
-                proxy_cache_bypass $http_upgrade;
+        proxy_pass http://localhost:1818/;   # note the trailing /
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
        }
     - restart your nginx using: sudo systemctl restart nginx
     - modify the BASE URL in front end project to "/api"
+    - try to take the git pull from front end repo to refelct recent changes.
+    - then still your APIs won't to work your api's you have to do follow same front end deplyment process
+    - npm run build: to create a new fresh build
+    - then run sudo scp -r dist/* /var/www/html : copy all the code into /var/www/html from dist folder
 
 
 
