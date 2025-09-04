@@ -14,6 +14,7 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { FiUser, FiUsers, FiLogOut, FiHeart } from "react-icons/fi";
 import { TbFriends } from "react-icons/tb";
 
+
 export default function NavBar() {
   const user = useSelector((store) => store.user);
   const [isOpen, setIsOpen] = useState(false);
@@ -57,30 +58,14 @@ export default function NavBar() {
           >
             <img src="./favicon.svg" alt="DevCircle" className="w-8 h-8" />
             <p className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                DevCircle
+                DevBuddy
             </p>
           </Link>
         </div>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-4">
-          {!user && (
-            <>
-              <Link to="/auth?mode=login">
-                <button className="btn btn-outline btn-sm gap-2 border-primary text-primary hover:bg-primary hover:text-white">
-                  <LogIn className="w-4 h-4" />
-                  Login
-                </button>
-              </Link>
-              <Link to="/auth?mode=signup">
-                <button className="btn btn-primary btn-sm gap-2 text-white">
-                  <UserPlus className="w-4 h-4" />
-                  Sign Up
-                </button>
-              </Link>
-            </>
-          )}
-
+   
           {user && (
             <div className="flex items-center font-bold">
               <span className="text-neutral bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">👋 Welcome, {user.firstName}</span>
@@ -164,36 +149,20 @@ export default function NavBar() {
         </div>
 
         {/* Mobile Hamburger */}
-        <button
-          className="md:hidden text-neutral"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {user && (
+          <button
+            className="md:hidden text-neutral"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        )}
       </div>
 
       {/* Mobile Nav Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-base-100 border-t border-base-300 shadow-lg text-primary">
           <nav className="flex flex-col items-start p-4 space-y-3">
-            {!user && (
-              <>
-                <Link
-                  to="/auth?mode=login"
-                  onClick={() => setIsOpen(false)}
-                  className="btn btn-outline w-full gap-2 border-primary text-primary hover:bg-primary hover:text-white"
-                >
-                  <LogIn className="w-4 h-4" /> Login
-                </Link>
-                <Link
-                  to="/auth?mode=signup"
-                  onClick={() => setIsOpen(false)}
-                  className="btn btn-primary w-full gap-2 text-white"
-                >
-                  <UserPlus className="w-4 h-4" /> Sign Up
-                </Link>
-              </>
-            )}
 
             {user && (
               <>

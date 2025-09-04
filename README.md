@@ -135,7 +135,23 @@ Crafted with 💻 love to empower your next big idea
     - npm run build: to create a new fresh build
     - then run sudo scp -r dist/* /var/www/html : copy all the code into /var/www/html from dist folder
 
+# Adding a custom domain name
+    - purchased doamin name from godaddy
+    - signup on cloudflare & add a new domain name and it provides new nameservers
+    - change the name servers on godaddy and point it to cloudflare
+    - wait for sometime till your nameservers are updated took arround 15mints
+    - let's create a DNS record on cloudflare 
+    - DNS record: A devbuddy.in to 54.196.190.168 (public IP)
+    - DNS record: CNAME www to devbuddy.in
+    - once setup the above records try accessing the url and see the magic
+    - to keep our website secure we enable the SSL for website
+    - type is flexible where it secures the browser to cloudflare
 
-
-
-
+# sending an email to AWS SES (simple email service)
+- create IAM user
+- Give access to AmazonSESFullAccess
+- Amazon SES: create an identity 
+- verify your domain name
+- verify an email address
+- Install AWS SDK - v3
+- code example: https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples

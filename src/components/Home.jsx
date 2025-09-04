@@ -4,10 +4,7 @@ import { Code2, Users, Rocket, MessageSquare } from "lucide-react";
 import { FaUsers, FaCode, FaProjectDiagram } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { useSelector } from "react-redux";
-
-
 
 const Home = () => {
 
@@ -29,7 +26,7 @@ const Home = () => {
     return text.slice(0, subIndex);
     }
 
-    const welcomeText = useTypewriterOnce("👋 Welcome to DevCircle");
+    const welcomeText = useTypewriterOnce("👋 Welcome to DevBuddy");
 
     const quotes = [
     "Alone we can do so little; together we can do so much.",

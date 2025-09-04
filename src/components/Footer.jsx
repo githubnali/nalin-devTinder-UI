@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <footer className="w-full bg-primary text-white px-6 py-6">
-      <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-6 max-w-6xl mx-auto">
+      <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-6 max-w-6xl mx-auto">
         
         {/* Left: Logo + text */}
         <div className="flex justify-center items-center gap-2">
@@ -13,7 +13,7 @@ const Footer = () => {
               alt="DevCircle Logo"
               className="w-8 h-8"
             />
-            <span className="font-bold text-lg">DevCircle</span>
+            <span className="font-bold text-lg">DevBuddy</span>
           </div>
           <p className="text-sm opacity-80">
             © {new Date().getFullYear()} All rights reserved
