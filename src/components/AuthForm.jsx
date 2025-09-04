@@ -87,9 +87,9 @@ export default function AuthForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <a href="#" className="text-sm text-primary mb-4 hover:underline font-semibold">
+            {/* <a href="#" className="text-sm text-primary mb-4 hover:underline font-semibold">
               Forgot your password?
-            </a>
+            </a> */}
             {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <button className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition font-semibold" onClick={handleLogin}>
               Sign In
