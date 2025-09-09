@@ -155,3 +155,23 @@ Crafted with 💻 love to empower your next big idea
 - verify an email address
 - Install AWS SDK - v3
 - code example: https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples
+- setup ses client
+- access credentials should be created on IAM under security credentials tab
+- add the credentials to the env file
+- write code for sesclient
+- write code for sedning emails
+- make the email dynamic by passing more parameters to run function like subject, body
+- in v3 pass credentials as an object with accessKeyID, secretKeyId
+
+
+# scheduling cron jobs
+    - Installing node-cron
+    - learning cron expression syntax - crontab.guru
+    - schedule a cron job 
+    - learnt about date-fns
+    - find all the unique email id's who have got the connection request in previous day
+    - send email to all of them
+    - to send bulk email : explore the queue mechanism to sending the buik emails
+    - Amazon SES bulk emails
+    - make send function dynamic
+    -bee-quee and bull npm packages for queue mechanism
