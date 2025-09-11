@@ -175,3 +175,8 @@ Crafted with 💻 love to empower your next big idea
     - Amazon SES bulk emails
     - make send function dynamic
     -bee-quee and bull npm packages for queue mechanism
+
+# Razorpay Payment Gateway Integration
+    - Sign up on Razorpay & complete kyc
+    - Created a UI for premium page
+    - Creating an APO for backend create-order

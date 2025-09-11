@@ -116,6 +116,14 @@ export default function NavBar() {
                             </Link>
                         </li>
                         <li>
+                          <Link
+                            to="/premium"
+                            className="text-primary dark:text-white hover:bg-primary/10 rounded-lg px-2"
+                          >
+                            Premium
+                          </Link>
+                        </li>
+                        <li>
                             <button
                                 onClick={toggleTheme}
                                 className="flex items-center gap-2 text-primary hover:bg-primary/10 rounded-lg px-2 py-1 transition"
@@ -186,6 +194,12 @@ export default function NavBar() {
                   className="hover:text-primary"
                 >
                   Requests
+                </Link>
+                <Link
+                  to="/premium"
+                  className="hover:text-primary"
+                >
+                Premium
                 </Link>
                 <button
                   onClick={() => {
