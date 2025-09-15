@@ -85,7 +85,7 @@ const Chat = () => {
   }
 
   return (
-     <div className="flex flex-col h-[600px] bg-gradient-to-r from-indigo-50 to-indigo-200 w-1/2 mx-auto my-10 pb-1">
+     <div className="flex flex-col h-[600px] bg-gradient-to-r from-indigo-50 to-indigo-200 w-3/4 md:w-1/2 mx-auto my-10 pb-1">
       {/* Chat Header */}
       <div className="bg-gradient-to-r from-indigo-500 to-indigo-700 text-white text-lg font-bold px-4 py-3 shadow-md rounded-sm">
         💬 DevBuddy Chat

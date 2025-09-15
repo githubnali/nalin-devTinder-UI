@@ -9,9 +9,9 @@ const Footer = () => {
         <div className="flex justify-center items-center gap-2">
           <div className="flex items-center gap-2">
             <img
-              src="./favicon.svg"
+              src="/brand_logo.svg"
               alt="DevCircle Logo"
-              className="w-8 h-8"
+              className="w-10 h-10"
             />
             <span className="font-bold text-lg">DevBuddy</span>
           </div>

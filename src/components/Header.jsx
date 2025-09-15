@@ -1,5 +1,5 @@
 // src/components/NavBar.tsx
-import { LogIn, UserPlus, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
 import {useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -56,7 +56,7 @@ export default function NavBar() {
             to="/"
             className="flex items-center gap-2 font-bold text-xl"
           >
-            <img src="./favicon.svg" alt="DevCircle" className="w-8 h-8" />
+            <img src="/brand_logo.svg" alt="DevCircle" className="w-10 h-10" />
             <p className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 DevBuddy
             </p>
@@ -115,15 +115,15 @@ export default function NavBar() {
                             <FiUsers size={16}/> Requests
                             </Link>
                         </li>
-                        <li>
+                        {/* <li>
                           <Link
                             to="/premium"
                             className="text-primary dark:text-white hover:bg-primary/10 rounded-lg px-2"
                           >
                             Premium
                           </Link>
-                        </li>
-                        <li>
+                        </li> */}
+                        {/* <li>
                             <button
                                 onClick={toggleTheme}
                                 className="flex items-center gap-2 text-primary hover:bg-primary/10 rounded-lg px-2 py-1 transition"
@@ -140,10 +140,10 @@ export default function NavBar() {
                                     </>
                                 )}
                             </button>
-                        </li>
+                        </li> */}
                         <li>
                             <button
-                            className="text-primary dark:text-white hover:bg-error/10 hover:text-error rounded-lg px-2"
+                            className="text-error dark:text-white hover:bg-error/10 hover:text-error rounded-lg px-2"
                             onClick={handleLogout}
                             >
                             <FiLogOut size={16} /> Logout
@@ -184,30 +184,32 @@ export default function NavBar() {
                 <Link
                   to="/connections"
                   onClick={() => setIsOpen(false)}
-                  className="hover:text-primary"
+                  className="hover:text-primary flex items-center gap-2 font-medium"
                 >
-                  Connections
+                  <TbFriends size={16} /> Connections
                 </Link>
                 <Link
                   to="/requests"
                   onClick={() => setIsOpen(false)}
-                  className="hover:text-primary"
+                  className="hover:text-primary flex items-center gap-2 font-medium"
                 >
+                  <FiUsers size={16}/>
                   Requests
                 </Link>
-                <Link
+                {/* <Link
                   to="/premium"
                   className="hover:text-primary"
                 >
                 Premium
-                </Link>
+                </Link> */}
                 <button
                   onClick={() => {
                     setIsOpen(false);
                     handleLogout();
                   }}
-                  className="text-left text-error"
+                  className="text-left text-error flex items-center gap-2 font-medium"
                 >
+                  <FiLogOut size={16} />
                   Logout
                 </button>
               </>
