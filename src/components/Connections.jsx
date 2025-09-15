@@ -4,6 +4,8 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionsSlice";
 
+import { Link } from "react-router-dom";
+
 const Connections = () => {
   const dispatch = useDispatch();
 
@@ -60,6 +62,9 @@ const Connections = () => {
             )}
             <p className="text-neutral/80 text-sm mt-1">{connection.about}</p>
           </div>
+          <Link to={"/chat/" + connection._id}>
+            <button className="btn btn-primary">Chat</button>
+          </Link>
         </div>
       ))}
     </div>

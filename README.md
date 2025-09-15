@@ -176,6 +176,32 @@ Crafted with 💻 love to empower your next big idea
     - make send function dynamic
     -bee-quee and bull npm packages for queue mechanism
 
+# Real time chat using Websockets underlying concept(socket.io)
+    - Build the UI for chat window on /chat/:targetUserId
+    - setup socket.io on backend
+    - npm i socket.io
+    - then do the configuration on backend app.js file
+    - then do the configuration on frontend as well in chat.js file install the socket.io-client
+    - in backend we have required socket.io and initialize the socket receieve the server and 
+    - allow the cors
+    - made the connection on
+    - inside the connection on
+    - have to handle the events like joinChat, sendMessage
+    - similarly in frontend also create a socket connetion and export it into chat.js
+    - create socket emit the joinChat and messageReceived
+    - now we can see the user can able to initiate the chat and sendMessages
+    - now we found one issue is once user refresh the page chat window refreshing
+    - to make to save the chat we are going to use the one more DB schema for that
+    - Home work is Improve UI 
+    - Fix Security bug: can i send message is to a person who is not my friend
+        - auth issue in web sockets
+    - Bug Fix: if I'm not friend, then i should not be able to send messages
+    - Build a feature: Show green symbol when user is online??? or lastseend when user is not online
+        - whenever there is a connection request established try to save that info and time stamp
+    - Limit messages when fetching from DB
+    - project idea: tic tac toe game
+    - project idea-2: chess game
+
 # Razorpay Payment Gateway Integration
     - Sign up on Razorpay & complete kyc
     - Created a UI for premium page
