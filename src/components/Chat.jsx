@@ -8,20 +8,24 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 
 const Chat = () => {
+
+  //get the target userID to whoom you want to chat
   const { targetUserId } = useParams();
 
+  // get the logged in user
   const user = useSelector(store => store.user);
 
+  //store the id of logged in user
   const userId = user?._id;
 
-  console.log(targetUserId);
-
+  //useState for message
   const [messages, setMessages] = useState([]);
 
+  //useState for new messages
   const [newMessage, setNewMessage] = useState("");
 
 
-  console.log(messages);
+  //useEffect to create a socket connection to emit the on the connection
   useEffect(() => {
 
     if(!user) {
@@ -33,24 +37,24 @@ const Chat = () => {
     //as soo as page loads, the socket connection is made and joinChat event is emitted.
     socket.emit("joinChat", {firstName: user.firstName, userId, targetUserId});
 
+    //set the message 
     socket.on("messageReceived", ({firstName, lastName, text, profile, targetUserId}) => {
-        console.log(firstName + ": " + text);
-
         setMessages((messages) => [...messages, {firstName, lastName, text, profile, targetUserId}])
     }) 
 
-    //
     return () => {
       socket.disconnect();
     }
   }, [userId, targetUserId])
 
+  //fetch previous messages from DB through api call
   const fetchChatMessages = async () => {
+    //api call
     const chat = await axios.get(BASE_URL + "/chat/" + targetUserId, {
       withCredentials: true
     })
 
-    console.log(chat.data.messages);
+    // store the chat messages in new obj
     const chatMessages = chat?.data?.messages.map((msg) => {
       const {senderId, text} = msg;
       return {
@@ -60,17 +64,21 @@ const Chat = () => {
         text
       };
     });
+
+    //updating the messages using setMessages method
     setMessages(chatMessages);
   }
 
+  //calling fetch messages on page loads
   useEffect(() => {
     fetchChatMessages();
   }, [])
 
+
+  //send the messaged using sendMessage handler
   const sendMessage = () => {
     const socket = CreateSocketConnection();
 
-    console.log(user.photoUrl);
     socket.emit('sendMessage', {firstName: user.firstName, lastName: user.lastName, userId, targetUserId, text: newMessage, profile: user.photoUrl});
 
     setNewMessage("");
@@ -86,8 +94,9 @@ const Chat = () => {
       {/* Chat Conversation */}
       <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {messages.map((msg, index) => {
-          console.log(msg.profile)
+
           const chatPosition = user.firstName === msg.firstName ? "chat-end" : "chat-start";
+
           return (
             <div key={index} className={`chat ${chatPosition}`}>
               <div className="chat-image avatar">
