@@ -18,6 +18,11 @@ export default function AuthForm() {
 
   const [isSignUp, setIsSignUp] = useState(false);
 
+  const [signInError, setSignInError] = useState(false);
+
+  const [signUpError, setSignUpError] = useState(false);
+
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate()
@@ -33,9 +38,12 @@ export default function AuthForm() {
           }, {
               withCredentials: true
           });
-          dispatch(addUser(res.data));
+
+          dispatch(addUser(res.data.data));
           navigate("/profile")
       } catch(err) {
+          setSignInError(false);
+          setSignUpError(true);
           setError(err?.response?.data || "Something Went Wrong!!!")
       }
   }
@@ -53,6 +61,8 @@ export default function AuthForm() {
           dispatch(addUser(res.data));
           navigate("/feed")
       } catch(err) {
+          setSignUpError(false);
+          setSignInError(true);
           setError(err?.response?.data || "Something Went Wrong!!!")
       }
   }
@@ -90,7 +100,7 @@ export default function AuthForm() {
             {/* <a href="#" className="text-sm text-primary mb-4 hover:underline font-semibold">
               Forgot your password?
             </a> */}
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            {signInError && error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <button className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition font-semibold" onClick={handleLogin}>
               Sign In
             </button>
@@ -151,7 +161,7 @@ export default function AuthForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+            {signUpError && error && <p className="text-red-500 text-sm mb-4">{error}</p>}
             <button className="bg-indigo-600 text-white px-6 py-2 rounded-md font-semibold hover:bg-indigo-700 transition" onClick={handleSignup}>
               Sign Up
             </button>

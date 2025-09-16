@@ -4,9 +4,10 @@ import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { X } from "lucide-react"; // Importing the X icon
+import { X } from "lucide-react"; // Importing the X icon;
 
-const EditProfile = ({ user }) => {
+const EditProfile = ({user}) => {
+
   const [firstName, setFirstName] = useState(user.firstName);
   const [lastName, setLastName] = useState(user.lastName);
   const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
@@ -183,7 +184,7 @@ const EditProfile = ({ user }) => {
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
                         onKeyDown={handleKeyDown}
-                        placeholder={skills.length === 0 ? "e.g. React" : ""}
+                        placeholder={skills.length === 0 ? "E.g. React, Angular, Node.js, AWS" : ""}
                         className="flex-grow min-w-[120px] bg-transparent outline-none border-none p-1"
                         style={{ minWidth: "120px" }}
                     />

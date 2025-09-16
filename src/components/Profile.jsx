@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux'
 
 const Profile = () => {
 
-  const user = useSelector((store) => store.user)
+  const user = useSelector((store) => store.user);
+
   return (
     (user && 
       <div className='container mx-auto py-10'>
