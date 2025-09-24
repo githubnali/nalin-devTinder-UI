@@ -26,7 +26,7 @@ const Home = () => {
     return text.slice(0, subIndex);
     }
 
-    const welcomeText = useTypewriterOnce("👋 Welcome to DevBuddy");
+    const welcomeText = useTypewriterOnce("👋 Welcome you to DevBuddy");
 
     const quotes = [
     "Alone we can do so little; together we can do so much.",

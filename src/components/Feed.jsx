@@ -10,6 +10,7 @@ const Feed = () => {
   const feed = useSelector((store) => store.feed) || []; // should always be []
   const dispatch = useDispatch();
 
+  //hget the latest feed
   const getFeed = async () => {
     if (feed.length > 0) return; // don't refetch if already available
     try {
@@ -20,6 +21,7 @@ const Feed = () => {
     }
   };
 
+  //calling after immediate page loads
   useEffect(() => {
     getFeed();
   }, []);

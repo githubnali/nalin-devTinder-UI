@@ -1,4 +1,4 @@
-# nalin-DevTinder-UI
+# nalin-DevTinder-UI:
 
 - Create a vite + React application
 - Remove Unecessary code and create a first line oif app
@@ -12,7 +12,7 @@
 - create an Outlet in your body component
 - create footer component
 
-EP:16
+# EP:16
 - create a login page
 - Install axios
 - CORS - install cors in backend ==> add the middleware to app with configurations are origin and credentials: true
@@ -49,27 +49,8 @@ EP:16
 - E2E testing
 
 
-
-
 # EP : UI flow One
 - Home Page creation
-
-
-
-## crafted
-Made with ❤️ love for developers everywhere
-Crafted with 💻 love, for coders by coders
-Built with ❤️ passion for the developer community
-Designed with 💻 care, by devs for devs
-Made with ❤️ dedication for those who turn ideas into code
-Crafted with 💻 love, inspired by the dev spirit
-Created with ❤️ heart for devs who love to connect
-Built with 💻 purpose, by devs for devs
-Made with ❤️ love & clean code for all developers
-Crafted with 💻 love to empower your next big idea
-
-
-
 
 - Body
     NavBar
@@ -79,7 +60,7 @@ Crafted with 💻 love to empower your next big idea
     Route = /profile => show my profile
 
 
-- Deployment Steps:
+# Deployment Steps:
 - Signup on AWS
 - Lanunch an Instance
 - chmod 400 devcircle-secret.pem
@@ -102,7 +83,7 @@ Crafted with 💻 love to empower your next big idea
     - it won't work because we have to enable port :80 
     - Go to your security groups and and enable the port :80 then you can see your Public IP up and running
 
-- Backend Deployment Steps:
+# Backend Deployment Steps:
     - allowed EC2 instance public IP on mongoDB sever
     - installed pm2 (process management) using npm install pm2 -g
     - pm2 start npm -- start : to run 24/7 in the background
