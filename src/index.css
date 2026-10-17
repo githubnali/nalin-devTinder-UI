@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-  color: #ffffff;
-}
-
-header {
-  background-color: black;
-}
-
-main {
-  background-color: #ffffff;
-  color: #000;
-  padding: 50px 0;
+html {
+  scroll-behavior: smooth;
 }

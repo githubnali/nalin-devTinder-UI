@@ -5,7 +5,6 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function AuthForm() {
 
@@ -114,7 +113,7 @@ export default function AuthForm() {
           >
             <h2 className="text-xl md:text-3xl font-bold mb-5">Hello, Developer!</h2>
             <p className="text-center mb-6">
-              Register with your personal details to use all of the site's features.
+              Register with your personal details to use all of the site&apos;s features.
             </p>
             <Link to="/auth?mode=signup">
               <button
@@ -175,7 +174,7 @@ export default function AuthForm() {
           >
             <h2 className="text-xl md:text-3xl font-bold mb-4">Welcome Back!</h2>
             <p className="text-center mb-6">
-              Enter your personal details to use all of the site's features.
+              Enter your personal details to use all of the site&apos;s features.
             </p>
             <Link to="/auth?mode=login">
               <button

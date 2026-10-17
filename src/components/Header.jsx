@@ -14,6 +14,13 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { FiUser, FiUsers, FiLogOut, FiHeart } from "react-icons/fi";
 import { TbFriends } from "react-icons/tb";
 
+const navLinks = [
+  { label: "Home", href: "/" },
+  { label: "Community", href: "/#community" },
+  { label: "Resources", href: "/#resources" },
+  { label: "Projects", href: "/#projects" },
+  { label: "About", href: "#about" },
+];
 
 export default function NavBar() {
   const user = useSelector((store) => store.user);
@@ -56,7 +63,7 @@ export default function NavBar() {
             to="/"
             className="flex items-center gap-2 font-bold text-xl"
           >
-            <img src="/brand_logo.svg" alt="DevCircle" className="w-10 h-10" />
+            <img src="/brand_logo.svg" alt="DevBuddy" className="w-10 h-10" />
             <p className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 DevBuddy
             </p>
@@ -64,8 +71,45 @@ export default function NavBar() {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-4">
-   
+        <div className="hidden md:flex items-center gap-6">
+          {!user && (
+            <nav className="flex items-center gap-6 mr-2">
+              {navLinks.map((link) =>
+                link.href === "/" ? (
+                  <Link
+                    key={link.label}
+                    to={link.href}
+                    className="text-sm font-medium text-neutral/70 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="text-sm font-medium text-neutral/70 hover:text-primary transition-colors"
+                  >
+                    {link.label}
+                  </a>
+                )
+              )}
+            </nav>
+          )}
+
+          {!user && (
+            <div className="flex items-center gap-3">
+              <Link to="/auth?mode=login" className="btn btn-sm btn-outline border-primary/30 text-primary rounded-full px-5">
+                Sign In
+              </Link>
+              <Link
+                to="/auth?mode=signup"
+                className="btn btn-sm bg-gradient-to-r from-primary to-accent border-0 text-white rounded-full px-5"
+              >
+                Join Now
+              </Link>
+            </div>
+          )}
+
           {user && (
             <div className="flex items-center font-bold">
               <span className="text-neutral bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">👋 Welcome, {user.firstName}</span>
@@ -157,20 +201,60 @@ export default function NavBar() {
         </div>
 
         {/* Mobile Hamburger */}
-        {user && (
-          <button
-            className="md:hidden text-neutral"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        )}
+        <button
+          className="md:hidden text-neutral"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
       {/* Mobile Nav Dropdown */}
       {isOpen && (
         <div className="md:hidden bg-base-100 border-t border-base-300 shadow-lg text-primary">
           <nav className="flex flex-col items-start p-4 space-y-3">
+
+            {!user && (
+              <>
+                {navLinks.map((link) =>
+                  link.href === "/" ? (
+                    <Link
+                      key={link.label}
+                      to={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="font-medium text-neutral"
+                    >
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="font-medium text-neutral"
+                    >
+                      {link.label}
+                    </a>
+                  )
+                )}
+                <div className="flex gap-3 pt-2 w-full">
+                  <Link
+                    to="/auth?mode=login"
+                    onClick={() => setIsOpen(false)}
+                    className="btn btn-sm btn-outline border-primary/30 text-primary rounded-full flex-1"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/auth?mode=signup"
+                    onClick={() => setIsOpen(false)}
+                    className="btn btn-sm bg-gradient-to-r from-primary to-accent border-0 text-white rounded-full flex-1"
+                  >
+                    Join Now
+                  </Link>
+                </div>
+              </>
+            )}
 
             {user && (
               <>

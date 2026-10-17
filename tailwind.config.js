@@ -9,6 +9,18 @@ export default {
         display: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace"],
       },
+      // Mirrors the devcircleLight daisyui theme below so Tailwind's own
+      // opacity-modifier utilities (bg-primary/10, border-accent/30, etc.)
+      // work — daisyui's CSS-variable-based colors don't support those on
+      // their own. Keep in sync with devcircleLight if it changes; this
+      // intentionally does not track devcircleDark since theme switching
+      // isn't wired up yet.
+      colors: {
+        primary: "#6C5CE7",
+        secondary: "#00B894",
+        accent: "#FF7675",
+        neutral: "#1F2937",
+      },
     },
   },
   plugins: [daisyui],

@@ -3,7 +3,6 @@ import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequest, removeRequest } from "../utils/requestSlice";
-import { div } from "framer-motion/client";
 
 const Requests = () => {
   const dispatch = useDispatch();
